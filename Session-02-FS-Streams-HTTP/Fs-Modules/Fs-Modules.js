@@ -1,7 +1,3 @@
-// Session-03-FS-Streams-HTTP
-//  Session-01-JS
-//  Session-02-Path-Events
-
 const fs = require("node:fs");
 
 /********************************************* 1- Read File *********************************************/
@@ -68,7 +64,42 @@ const fs = require("node:fs");
 // //sync
 // fs.copyFileSync("./Fs-Modules.js", "New2.txt");
 
-/********************************************* 1- Read File *********************************************/
-/********************************************* 1- Read File *********************************************/
-/********************************************* 1- Read File *********************************************/
-/********************************************* 1- Read File *********************************************/
+/********************************************* 1- Create Floders *********************************************/
+// // create Folders with check security
+// if (!fs.existsSync("projects1/node1/app3")) {
+//   fs.mkdir("projects1/node1/app3", { recursive: true }, (err) => {
+//     if (err) throw err;
+//   });
+// }
+
+// // create Files
+// fs.writeFile("projects1/node1/app3/text.txt", "sayed", "utf8", (err) => {
+//   if (err) throw err;
+// });
+
+/********************************************* 2- Remove Floders *********************************************/
+// fs.rmdir("./projects1", { recursive: true, force: true }, (err) => {
+//   if (err) throw err;
+// });
+// fs.rmdirSync("projects1", { recursive: true, force: true });
+
+/********************************************* 3- Read Folders *********************************************/
+// fs.readdir("./projects1", (err, files) => {
+//   if (err) throw err;
+//   console.log(files);
+// });
+/********************************************* 4- Check Folders *********************************************/
+
+// console.log(fs.existsSync("projects1/node1/app3"));
+
+/**********************************************   Example   ****************************************************/
+// let data1 = [
+//   { name: "sayed", id: 1 },
+//   { name: "sama", id: 2 },
+// ];
+
+// const data = JSON.stringify(data1);
+
+// fs.writeFile("./Fs-Modules.txt", data, "utf8", (err) => {
+//   if (err) throw err;
+// });
