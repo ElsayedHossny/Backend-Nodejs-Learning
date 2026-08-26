@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Blogs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f9;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #667eea;
+      color: #fff;
+      padding: 15px 30px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    /* Blog Card */
+    .blog {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .blog img {
+      width: 220px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .blog-content {
+      flex: 1;
+    }
+
+    .blog-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .blog-content p {
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .blog-content a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .blog-content a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .blog {
+        flex-direction: column;
+      }
+
+      .blog img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <h2>Our Blogs</h2>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="container">
+
+    <h1>Latest Articles</h1>
+
+    <div class="blog">
+      <img src="https://via.placeholder.com/400x250" alt="Blog">
+      <div class="blog-content">
+        <h3>Understanding Node.js Event Loop</h3>
+        <div class="meta">By Ahmed Ali · Jan 10, 2026</div>
+        <p>
+          The event loop is the heart of Node.js. In this article, we explain
+          how it works and why it makes Node.js highly scalable and efficient
+          for backend applications.
+        </p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog">
+      <img src="https://via.placeholder.com/400x250" alt="Blog">
+      <div class="blog-content">
+        <h3>REST vs GraphQL: Which One Should You Use?</h3>
+        <div class="meta">By Sara Mohamed · Jan 5, 2026</div>
+        <p>
+          REST and GraphQL are two popular API architectures. This article
+          compares them in terms of performance, flexibility, and use cases
+          to help you choose the right one.
+        </p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog">
+      <img src="https://via.placeholder.com/400x250" alt="Blog">
+      <div class="blog-content">
+        <h3>Authentication with JWT in Node.js</h3>
+        <div class="meta">By Omar Hassan · Dec 28, 2025</div>
+        <p>
+          JWT is one of the most common authentication methods in modern
+          applications. Learn how to implement secure authentication
+          using JSON Web Tokens in Node.js.
+        </p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

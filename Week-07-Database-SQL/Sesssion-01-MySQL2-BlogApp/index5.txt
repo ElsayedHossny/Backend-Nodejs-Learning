@@ -1,0 +1,93 @@
+const express = require("express");
+const app = express();
+
+// 1 import drive mysql2
+const mysql = require("mysql2");
+// 2 creat connect with database
+const connection = mysql.createConnection({
+  host: 3000,
+  user: "root",
+  password: "1234",
+  database: "Bolg",
+});
+// 3 connect check
+connection.connect((err) => {
+  if (err) {
+    console.log("failed connect", err);
+  } else {
+    console.log("sucess connect");
+    return;
+  }
+});
+
+app.use(express.json());
+//================================================== SignUp ========================================
+app.post("/user/signUp", (req, res) => {
+  const { name, email, password, age, gender } = req.body;
+
+  // 4 write query on database
+  const insertQuery = `insert into User (name, email, password, age, gender) values (?,?,?,?,?)`;
+  connection.execute(
+    insertQuery,
+    [name, email, password, age, gender],
+    (err, result) => {
+      // console.log("Erroor :::: ", err);
+      // console.log("result :::: ", result);
+      if (err) {
+        console.log("Not add User");
+        res.status(500).json({ message: "Not add User", Error: err });
+      } else {
+        console.log("Sucess Add New User");
+        res.status(201).json({ message: "Sucess Add New User", User: result });
+      }
+    },
+  );
+});
+
+//================================================== SignIn ========================================
+app.post("/user/signIn", (req, res) => {
+  const { email, password } = req.body;
+
+  const insertQuery = `select email from User where email=? && password=?`;
+  connection.execute(insertQuery, [email, password], (err, result) => {
+    if (err) {
+      res.status(500).json({ message: "Error in Execute " });
+    } else {
+      if (!result.length)
+        return res
+          .status(500)
+          .json({ message: "User not define", status: false });
+
+      console.log("result :::: ", result);
+      res
+        .status(201)
+        .json({ message: "Sucess Login", status: true, User: result[0] });
+    }
+  });
+});
+
+//================================================== AddBolgs ======================================
+app.post("/bolgs/add", (req, res) => {
+  const { title, content, UserId } = req.body;
+  const insertQuery = `insert into blog_tb (title, content, UserId) values (? , ? , ?)`;
+
+  connection.execute(insertQuery, [title, content, UserId], (err, result) => {
+    console.log(result);
+    if (err) {
+      console.log("Not add Blog");
+      res
+        .status(500)
+        .json({ message: "Not add Blog", status: false, Error: err });
+    } else {
+      console.log("Sucess Add New Blog");
+      res
+        .status(201)
+        .json({ message: "Sucess Add New Blog", status: true, Blogs: result });
+    }
+  });
+});
+
+//=================================================================================================
+app.listen(3000, () => {
+  console.log("Server is running");
+});
